@@ -25,7 +25,7 @@ const StoryList = ({ stories = [] }) => {
             </h2>
             <div className={styles.storyDetails}>
               <span>{score} points</span>
-              <Link href={`/story?id${id}`}>
+              <Link href={`/story?id=${id}`}>
                 <a>{descendants} comments</a>
               </Link>
             </div>
