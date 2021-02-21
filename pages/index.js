@@ -1,14 +1,13 @@
-import React from "react";
+import Error from "next/error";
+import StoryList from "../components/StoryList/StoryList";
 
 const App = ({ stories }) => {
+  if (stories.length === 0) return <Error statusCode={503} />;
+
   return (
-    <div>
-      Hacker news
-      {stories.map((story) => {
-        console.log({ story });
-        return <div>{story.title}</div>;
-      })}
-    </div>
+    <>
+      <StoryList stories={stories} />
+    </>
   );
 };
 
@@ -29,7 +28,6 @@ export async function getStaticProps() {
         ).then((res) => res.json())
       );
     const result = await Promise.all(promises);
-    console.log({ result });
     stories = result;
   } catch (err) {
     console.error(err);

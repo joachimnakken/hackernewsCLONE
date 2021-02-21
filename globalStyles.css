@@ -1,0 +1,16 @@
+body {
+  background-color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  color: #333;
+  text-decoration: underline;
+}
+
+.appInner {
+}
