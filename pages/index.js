@@ -1,7 +1,6 @@
 import React from "react";
 
-export default ({ stories }) => {
-  console.log({ stories });
+const App = ({ stories }) => {
   return (
     <div>
       Hacker news
@@ -15,7 +14,7 @@ export default ({ stories }) => {
 
 export async function getStaticProps() {
   let stories = [];
-  const url = "https://hacker-news.firebaseio.com/v0/topstorisses.json";
+  const url = "https://hacker-news.firebaseio.com/v0/topstories.json";
   try {
     const res = await fetch(url);
     if (!res.ok) {
@@ -43,3 +42,5 @@ export async function getStaticProps() {
     revalidate: 600,
   };
 }
+
+export default App;
