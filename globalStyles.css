@@ -2,7 +2,13 @@ body {
   background-color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
+footer {
+  padding: 1em;
+}
+footer a {
+  font-weight: bold;
+  color: black;
+}
 a {
   text-decoration: none;
   color: inherit;
