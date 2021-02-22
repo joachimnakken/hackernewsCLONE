@@ -1,0 +1,29 @@
+.comment {
+  margin-bottom: 1.6em;
+}
+.commentUser {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+.commentContent {
+  font-size: 0.9rem;
+}
+.commentContent p {
+  margin: 0em 0em 5em 0em;
+  word-wrap: break-word;
+}
+.commentContent a {
+  color: #f60;
+  text-decoration: underline;
+}
+.commentContent pre {
+  max-width: 100%;
+  overflow: scroll;
+}
+
+.nestedComment {
+  margin-top: 1em;
+  border-left: solid 1px rgba(0, 0, 0, 0.3);
+  padding-left: 1em;
+}

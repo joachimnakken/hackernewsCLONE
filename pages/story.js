@@ -1,45 +1,36 @@
-import { format } from "date-fns";
 import Error from "next/error";
 
-import nbLocale from "date-fns/locale/nb";
+import Story from "../components/Story";
 
-const Story = ({ story }) => {
-  const { score, kids, time } = story;
-  const newDate = new Date(0);
-  newDate.setUTCSeconds(time);
-
+const StoryComponent = ({ story, commentsArray }) => {
   if (!story) return <Error statusCode={503} />;
-  return (
-    <main>
-      <h1>
-        <a></a>
-      </h1>
-      <div className="storyDetails">
-        <strong> {score}</strong>
-        <strong>{kids.length}</strong>
-        <strong>{format(newDate, "dd.LLL.yy", { locale: nbLocale })}</strong>
-      </div>
-    </main>
-  );
+  return <Story comments={commentsArray} story={story} />;
 };
 
 export async function getServerSideProps({ query: { id = "" } = {} }) {
-  let story;
+  let story = null;
+  let commentsArray = [];
 
+  const url = `https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`;
   try {
-    story = await fetch(
-      `https://hacker-news.firebaseio.com/v0/item/${id}.json?print=pretty`
-    ).then((res) => {
-      console.log({ res });
-      return res.json();
-    });
-  } catch {
-    story = null;
+    const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error("Response Error:" + res.text);
+    }
+    story = await res.json();
+    const promises = story.kids.map((id) =>
+      fetch(
+        `https://hacker-news.firebaseio.com/v0/item/${id}.json`
+      ).then((res) => res.json())
+    );
+    commentsArray = await Promise.all(promises);
+  } catch (err) {
+    console.error(err);
   }
 
   return {
-    props: { story },
+    props: { story, commentsArray },
   };
 }
 
-export default Story;
+export default StoryComponent;

@@ -4,8 +4,13 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 export default ({ children }) => {
-  const { query: { slug = "0" } = {} } = useRouter();
+  const { query: { slug = "0" } = {}, route = "" } = useRouter();
   const slugInt = +slug;
+  const linkText =
+    route === "/page/[slug]" || route === "/"
+      ? "Next page..."
+      : "Go to page 1...";
+
   return (
     <div>
       <div className={styles.container}>
@@ -19,7 +24,7 @@ export default ({ children }) => {
         {children}
         <footer>
           <Link href={`/page/${slugInt + 1}`}>
-            <a>Next page...</a>
+            <a>{linkText}</a>
           </Link>
         </footer>
       </div>
