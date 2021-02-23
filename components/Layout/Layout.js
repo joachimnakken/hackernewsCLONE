@@ -10,11 +10,18 @@ export default ({ children }) => {
     route === "/page/[slug]" || route === "/"
       ? "Next page..."
       : "Go to page 1...";
-
+  console.log({ route, slugInt });
   return (
     <div>
       <div className={styles.container}>
         <nav className={styles.nav}>
+          {slugInt > 0 && (
+            <Link href={`/page/${slugInt - 1}`}>
+              <a>
+                <span>&#x2b05;</span>
+              </a>
+            </Link>
+          )}
           <Link href="/">
             <a>
               <span className={styles.mainTitle}>Hacker Next</span>
