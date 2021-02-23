@@ -1,8 +1,26 @@
 import Error from "next/error";
+import { useEffect } from "react";
 import StoryList from "../components/StoryList/StoryList";
 
 const App = ({ stories }) => {
   if (stories.length === 0) return <Error statusCode={503} />;
+
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      console.log({ navigator, NavSW: navigator.serviceWorker });
+      navigator.serviceWorker
+        .register("/service-worker.js")
+        .then(function (registration) {
+          console.log(
+            "Service worker registration great success",
+            registration
+          );
+        })
+        .catch((err) =>
+          console.warn("Service worker registration failed", err.message)
+        );
+    }
+  }, []);
 
   return (
     <>
