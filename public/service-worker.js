@@ -17,7 +17,7 @@ self.addEventListener("fetch", function (evt) {
 
 function precache() {
   return caches.open(CACHE).then(function (cache) {
-    return cache.addAll(["./controlled.html", "./asset"]);
+    return cache.addAll(["./", "./page/1", "./page/2"]);
   });
 }
 
