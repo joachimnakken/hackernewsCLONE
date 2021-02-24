@@ -17,13 +17,13 @@ export default ({ children }) => {
         <nav className={styles.nav}>
           {slugInt > 0 && (
             <Link href={`/page/${slugInt - 1}`}>
-              <a>
+              <a href="">
                 <span>&#x2b05;</span>
               </a>
             </Link>
           )}
           <Link href="/">
-            <a>
+            <a href="">
               <span className={styles.mainTitle}>Hacker Next</span>
             </a>
           </Link>
@@ -31,7 +31,7 @@ export default ({ children }) => {
         {children}
         <footer>
           <Link href={`/page/${slugInt + 1}`}>
-            <a>{linkText}</a>
+            <a href="">{linkText}</a>
           </Link>
         </footer>
       </div>
