@@ -1,6 +1,6 @@
 {
   "name": "hackernews_clone",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Hackernews clone",
   "main": "server.js",
   "scripts": {
