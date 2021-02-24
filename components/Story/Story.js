@@ -12,7 +12,7 @@ export default ({ story, comments }) => {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>
-        <a href={url}>{title}</a>
+        <a href={url || ""}>{title}</a>
       </h1>
       <div className={styles.storyDetails}>
         <strong> {score} points</strong>
