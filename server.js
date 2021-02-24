@@ -10,12 +10,13 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
   http
     .createServer((req, res) => {
+      // Legends say that url.parse is deprecated..
+      // works fine though.. for now.
       const parsedUrl = url.parse(req.url, true);
       const { pathname } = parsedUrl;
 
       if (pathname === "/service-worker.js") {
         const filePath = path.join(__dirname, ".next", pathname);
-        console.log("----->", { req, res, filePath });
         app.serveStatic(req, res, filePath);
       } else {
         handle(req, res, parsedUrl);

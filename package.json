@@ -9,7 +9,6 @@
     "start": "NODE_ENV=production node server.js",
     "build": "next build",
     "serve": "next start"
-
   },
   "keywords": [],
   "author": "Joachim Nakken",
