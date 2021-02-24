@@ -6,7 +6,7 @@ export default class MyDocument extends Document {
       <Html lang="en-US">
         <Head>
           <link rel="manifest" href="/manifest.json" />
-
+          <meta name="description " content="Hacker News clone with next js" />
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="application-name" content="HackerClone" />
